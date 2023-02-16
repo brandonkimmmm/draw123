@@ -5,6 +5,7 @@ import { LoggerModule } from 'nestjs-pino';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import config from './config';
+import { EventsModule } from './events/events.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
@@ -75,6 +76,7 @@ import { PrismaModule } from './prisma/prisma.module';
             }),
             inject: [ConfigService]
         }),
+        EventsModule,
         PrismaModule
     ],
     controllers: [AppController],

@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
+import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -19,6 +20,9 @@ async function bootstrap() {
             enableDebugMessages: config.get('NODE_ENV') !== 'production'
         })
     );
+
+    const prismaService: PrismaService = app.get(PrismaService);
+    prismaService.enableShutdownHooks(app);
 
     await app.listen(config.get<number>('PORT'));
 }

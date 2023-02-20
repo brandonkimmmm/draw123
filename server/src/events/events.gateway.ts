@@ -33,7 +33,7 @@ export class EventsGateway
         this.logger.log(`Client Disco nnected: ${client.id}`);
     }
 
-    @SubscribeMessage('message')
+    @SubscribeMessage('messages')
     findAll(client: Socket, payload: string) {
         console.log(client.rooms);
         this.wss.emit('message', payload);

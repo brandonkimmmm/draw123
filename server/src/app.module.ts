@@ -7,6 +7,8 @@ import { AppService } from './app.service';
 import config from './config';
 import { EventsModule } from './events/events.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
     imports: [
@@ -77,7 +79,9 @@ import { PrismaModule } from './prisma/prisma.module';
             inject: [ConfigService]
         }),
         EventsModule,
-        PrismaModule
+        PrismaModule,
+        AuthModule,
+        UserModule
     ],
     controllers: [AppController],
     providers: [AppService]
